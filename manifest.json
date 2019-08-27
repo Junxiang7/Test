@@ -1,0 +1,25 @@
+﻿{
+  "manifest_version": 2,
+  "name": "Cookie 工具",
+  "version": "1.0.0",
+  "description": "将网站的Cookie保存下来",
+  //// 会一直常驻的后台JS或后台页面
+  "background": {
+    "scripts": [ "background.js", "jquery-3.3.1.min.js" ]
+  }, // 权限申请
+  "content_scripts": {
+    [
+      {
+        "matches": [ "https://www.ctrip.com/*" ],
+      "js": [ "jquery-3.3.1.min.js", "Content.js" ],
+        "run_at": "document_end"
+      }
+    ]
+    "permissions": [
+      "tabs", // 标签
+      "cookies",
+      "storage", // 插件本地存储
+      "http://*/*", // 可以通过executeScript或者insertCSS访问的网站
+      "https://*/*" // 可以通过executeScript或者insertCSS访问的网站
+    ]
+  }
